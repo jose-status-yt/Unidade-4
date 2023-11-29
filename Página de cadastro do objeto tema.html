@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Área de administração</title>
+</head>
+<body>
+  <header>
+    <h1>Área de administração</h1>
+  </header>
+  <main>
+    <h2>Cadastro de objeto tema</h2>
+    <form action="/admin/objetos-tema/salvar" method="post">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome">
+      <label for="descricao">Descrição</label>
+      <input type="text" id="descricao" name="descricao">
+      <button type="submit">Salvar</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for objeto_tema in objetos_tema %}
+          <tr>
+            <td>{{ objeto_tema.nome }}</td>
+            <td>{{ objeto_tema.descricao }}</td>
+            <td><a href="/admin/objetos-tema/editar/{{ objeto_tema.id }}">Editar</a></td>
+            <td><a href="/admin/objetos-tema/apagar/{{ objeto_tema.id }}">Apagar</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+  <footer>
+    <p>Desenvolvido por Bard</p>
+    <a href="/about">Sobre</a>
+  </footer>
+</body>
+</html>
